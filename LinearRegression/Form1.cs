@@ -30,6 +30,8 @@ namespace LinearRegression
         {
             Tbl1DataX.Clear();
             Tbl1DataY.Clear();
+            testingX.Clear();
+            testingY.Clear();
             label1.Text = "";
             setTrainingTable();
             setTestingTable();
@@ -81,9 +83,24 @@ namespace LinearRegression
 
         private void addXinFormula(decimal c, decimal m)
         {
+            List<decimal> predictedY = new List<decimal>();
             foreach (decimal item in testingX)
             {
-                label1.Text += "\ny= mx+c  => y=(" + m + " * " + item + ") + " + c + "  =>  y = " + ((item*m)+c)  ; 
+                decimal pY = Math.Round(((item * m) + c),4);
+               // label1.Text += "\ny= mx+c  => y=(" + m + " * " + item + ") + " + c + "  =>  y = " + pY;
+               // label1.Text += "\ny= mx+c  =>   y = " + pY;
+                predictedY.Add(pY);
+            }
+
+
+            label1.Text += "\n   Data_Y   |   PredictedY    |  Error   |    E²   ";
+            for (int i = 0; i < predictedY.Count; i++)
+            {
+                decimal itemx = testingX[i];
+                decimal itemy = testingX[i];
+                decimal predictY = predictedY[i];
+                label1.Text += "\n   "+ itemy+ "   |   "+ predictY+"    |  "+ (itemy - predictY) +"   |    "+ ((itemy - predictY) * (itemy - predictY)) + "   ";
+
             }
         }
 
