@@ -78,7 +78,7 @@ namespace LinearRegression
             var m = calculateM(n, xx, yy, x2, xy);
 
             addXinFormula(c,m);
-            Debug.Log("test");
+
         }
 
         private void addXinFormula(decimal c, decimal m)
