@@ -77,7 +77,7 @@ namespace LinearRegression
             var c = calculateC(n, xx, yy, x2, xy);
             var m = calculateM(n, xx, yy, x2, xy);
 
-            addXinFormula(c,m);
+            addXinFormula(c, m);
 
         }
 
@@ -86,9 +86,9 @@ namespace LinearRegression
             List<decimal> predictedY = new List<decimal>();
             foreach (decimal item in testingX)
             {
-                decimal pY = Math.Round(((item * m) + c),4);
-               // label1.Text += "\ny= mx+c  => y=(" + m + " * " + item + ") + " + c + "  =>  y = " + pY;
-               // label1.Text += "\ny= mx+c  =>   y = " + pY;
+                decimal pY = Math.Round(((item * m) + c), 4);
+                // label1.Text += "\ny= mx+c  => y=(" + m + " * " + item + ") + " + c + "  =>  y = " + pY;
+                // label1.Text += "\ny= mx+c  =>   y = " + pY;
                 predictedY.Add(pY);
             }
 
@@ -98,19 +98,19 @@ namespace LinearRegression
             for (int i = 0; i < predictedY.Count; i++)
             {
                 decimal itemx = testingX[i];
-                decimal itemy = testingX[i];
+                decimal itemy = testingY[i];
                 decimal predictY = predictedY[i];
                 decimal error = (itemy - predictY);
                 decimal error2 = error * error;
                 sumoferror2 += error2;
-                label1.Text += "\n   "+ itemy+ "   |   "+  predictY + "    |  "+ Math.Round(error2, 4) + "   |    "+ Math.Round(error2,4) + "   ";
+                label1.Text += "\n   " + itemy + "   |   " + predictY + "    |  " + Math.Round(error, 4) + "   |    " + Math.Round(error2, 4) + "   ";
             }
 
             label1.Text += "\n\nNow calculating Mean ";
-            label1.Text += "\nMEAN = " + Math.Round(sumoferror2,4) + " / " + predictedY.Count;
-            label1.Text += "\nMEAN = " + Math.Round((sumoferror2 / predictedY.Count),4);
-            label1.Text += "\nRMSE = " + Math.Round(Math.Sqrt(Convert.ToDouble(sumoferror2 / predictedY.Count)),4);
-             
+            label1.Text += "\nMEAN = " + Math.Round(sumoferror2, 4) + " / " + predictedY.Count;
+            label1.Text += "\nMEAN = " + Math.Round((sumoferror2 / predictedY.Count), 4);
+            label1.Text += "\nRMSE = " + Math.Round(Math.Sqrt(Convert.ToDouble(sumoferror2 / predictedY.Count)), 4);
+
         }
 
         private void setTestingTable()
@@ -143,8 +143,15 @@ namespace LinearRegression
             decimal part4 = part2 - part3;
             decimal partall = part1 / part4;
 
-            label1.Text += "\nm = " + partall.ToString("0.###") +"\n";
-            return Math.Round(partall,4);
+            label1.Text += "\nm = " + partall.ToString("0.###") + "\n";
+
+            label8.Text += "\n\nFinding value of M";
+            label8.Text += "\nm= ( " + Math.Round(n * xy, 3) + ") - ( " + Math.Round(xx * yy, 3) + " )   / " + " ( " + Math.Round(n * x2, 3) + " ) -  ( " + Math.Round((xx * xx), 3) + " ) ";
+            label8.Text += "\nm= ( " + Math.Round(part1, 3) + ")  / " + " ( " + Math.Round(part4, 3) + " )";
+            label8.Text += "\nm=   " + Math.Round(partall, 3) + " ";
+             
+
+            return Math.Round(partall, 4);
         }
 
         private decimal calculateC(int n, decimal xx, decimal yy, decimal x2, decimal xy)
@@ -156,8 +163,18 @@ namespace LinearRegression
 
             decimal part3 = (n * x2) - (xx * xx);
             decimal partall = part12 / part3;
-            label1.Text += "\ny = mx + c"; 
+            label1.Text += "\ny = mx + c";
             label1.Text += "\nc = " + partall;
+
+             
+            label8.Text = "Finding value of C";
+            label8.Text += "\nc= ( " + Math.Round(yy, 3) + " x " + Math.Round(x2, 3) + ") - ( " + Math.Round(xx, 3) + " x " + Math.Round(xy, 3) + " )   / " + " ( " + n + " x " + Math.Round(x2, 3) + " ) -  ( " + Math.Round((xx * xx), 3) + " ) ";
+            label8.Text += "\nc= ( " + Math.Round(yy * x2, 3) + ") - ( " + Math.Round(xx * xy, 3) + " )   / " + " ( " + Math.Round(part3, 3) + " ) ";
+            label8.Text += "\nc= ( " + Math.Round(part12, 3) + " )   / " + " ( " + Math.Round(part3, 3) + " ) ";
+            label8.Text += "\nc=  " + Math.Round(partall, 3)  ;
+
+
+
             return Math.Round(partall, 4);
         }
 

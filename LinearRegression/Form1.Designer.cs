@@ -46,6 +46,7 @@ namespace LinearRegression
             this.txtn = new System.Windows.Forms.TextBox();
             this.txtTestingSet = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtTrainingSet
@@ -191,11 +192,23 @@ namespace LinearRegression
             this.label7.TabIndex = 15;
             this.label7.Text = "       Traning Data                   Testing Data";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Green;
+            this.label8.Location = new System.Drawing.Point(590, 237);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(45, 15);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "label8";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(819, 493);
+            this.ClientSize = new System.Drawing.Size(993, 493);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtTestingSet);
             this.Controls.Add(this.label6);
@@ -214,7 +227,7 @@ namespace LinearRegression
             this.Controls.Add(this.txtTrainingSet);
             this.ForeColor = System.Drawing.Color.Red;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Syed  Muhammad Idrees Roll number : CU-482-2017";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,6 +251,7 @@ namespace LinearRegression
         private System.Windows.Forms.TextBox txtn;
         private System.Windows.Forms.TextBox txtTestingSet;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }
 
