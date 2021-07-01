@@ -103,13 +103,13 @@ namespace LinearRegression
                 decimal error = (itemy - predictY);
                 decimal error2 = error * error;
                 sumoferror2 += error2;
-                label1.Text += "\n   "+ itemy+ "   |   "+ predictY+"    |  "+ error + "   |    "+ error2 + "   ";
+                label1.Text += "\n   "+ itemy+ "   |   "+  predictY + "    |  "+ Math.Round(error2, 4) + "   |    "+ Math.Round(error2,4) + "   ";
             }
 
-            label1.Text += "\nNow calculating Mean ";
-            label1.Text += "\nMEAN = " + sumoferror2 + " / " + predictedY.Count;
-            label1.Text += "\nMEAN = " + sumoferror2 / predictedY.Count;
-            label1.Text += "\nRMSE = " + Math.Sqrt(Convert.ToDouble(sumoferror2 / predictedY.Count));
+            label1.Text += "\n\nNow calculating Mean ";
+            label1.Text += "\nMEAN = " + Math.Round(sumoferror2,4) + " / " + predictedY.Count;
+            label1.Text += "\nMEAN = " + Math.Round((sumoferror2 / predictedY.Count),4);
+            label1.Text += "\nRMSE = " + Math.Round(Math.Sqrt(Convert.ToDouble(sumoferror2 / predictedY.Count)),4);
              
         }
 
