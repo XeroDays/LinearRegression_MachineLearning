@@ -94,14 +94,23 @@ namespace LinearRegression
 
 
             label1.Text += "\n   Data_Y   |   PredictedY    |  Error   |    E²   ";
+            decimal sumoferror2 = 0m;
             for (int i = 0; i < predictedY.Count; i++)
             {
                 decimal itemx = testingX[i];
                 decimal itemy = testingX[i];
                 decimal predictY = predictedY[i];
-                label1.Text += "\n   "+ itemy+ "   |   "+ predictY+"    |  "+ (itemy - predictY) +"   |    "+ ((itemy - predictY) * (itemy - predictY)) + "   ";
-
+                decimal error = (itemy - predictY);
+                decimal error2 = error * error;
+                sumoferror2 += error2;
+                label1.Text += "\n   "+ itemy+ "   |   "+ predictY+"    |  "+ error + "   |    "+ error2 + "   ";
             }
+
+            label1.Text += "\nNow calculating Mean ";
+            label1.Text += "\nMEAN = " + sumoferror2 + " / " + predictedY.Count;
+            label1.Text += "\nMEAN = " + sumoferror2 / predictedY.Count;
+            label1.Text += "\nRMSE = " + Math.Sqrt(Convert.ToDouble(sumoferror2 / predictedY.Count));
+             
         }
 
         private void setTestingTable()
